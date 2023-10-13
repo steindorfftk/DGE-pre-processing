@@ -1,5 +1,8 @@
 import os
 
+#Configuration
+refGenomePath = 'temporary/bowtie2/refGenomes/mm10.fasta'
+
 #Save accesion list
 accession_list = []
 with open('input/SraAccList.txt','r') as texto:
@@ -13,14 +16,44 @@ os.system('prefetch --option-file input/SraAccList.txt ')
 #Convert SRA to fastq
 for acc in accession_list:
 	print('\nDumping ' + acc + '...')
-	dumper = 'fasterq-dump ' + acc + ' -O fastqs/fastq_dump'
+	dumper = 'fasterq-dump ' + acc + ' -O temporary/fastq_dump'
 	os.system(dumper)
 
 
 #Run fastqc	
-fastq_files = os.listdir('fastqs/fastq_dump')	
-fastqc_output = 'fastqs/fastqc_output/'
+fastq_input = os.listdir('temporary/fastq_dump')	
+fastqc_output = 'temporary/fastqc_output/'
 
-for file in fastq_files:
-	fastqc = 'fastqc -o ' + fastqc_output + ' fastqs/fastq_dump/' + file
+for file in fastq_input:
+	fastqc = 'fastqc -o ' + fastqc_output + ' temporary/fastq_dump/' + file	
 	os.system(fastqc)
+	
+#bowtie2 setting
+bowtie_input = os.listdir('temporary/fastq_dump/')
+
+base_name = refGenomePath.replace('temporary/bowtie2/refGenomes/','').replace('.fasta','')
+index = 'temporary/bowtie2/indexes/' + base_name
+
+#bowtie2 genome index maker
+index_command = 'bowtie2-build '+ refGenomePath + ' temporary/bowtie2/indexes/' + base_name 
+os.system(index_command)
+
+
+#Run bowtie2
+for file in bowtie_input:
+	genome = refGenomePath
+	sequences = 'temporary/fastq_dump/' + file
+	output = 'temporary/bowtie2/' + file + '.sam'
+	bowtie = 'bowtie2 -x ' + index + ' -U ' + str(sequences) + ' -S ' + str(output)
+	os.system(bowtie) 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
