@@ -26,3 +26,12 @@ AAGTAGGTCTCGTCTGTGTTTTCTACGAGCTTGTGTTCCAGCTGACCCACTCCCTGGGTGGGGGGACTGGGT
 #Installing fastqc
 1 - Run sudo apt-get update
 2 - Run sudo apt-get install fastqc
+
+#Installing bowtie2
+1 - Run sudo apt update
+2 - Run sudo apt install bowtie2
+3 - Add the reference genomes' indexes at 'temporary/bowtie2/indexes/' Download: https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml
+
+
+
+

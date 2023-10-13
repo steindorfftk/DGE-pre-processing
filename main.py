@@ -9,7 +9,7 @@ with open('input/SraAccList.txt','r') as texto:
 	for line in texto:
 		linha = line.split()
 		accession_list.append(linha[0])
-
+'''
 #Download SRA data		
 os.system('prefetch --option-file input/SraAccList.txt ')
 
@@ -24,27 +24,22 @@ for acc in accession_list:
 fastq_input = os.listdir('temporary/fastq_dump')	
 fastqc_output = 'temporary/fastqc_output/'
 
-for file in fastq_input:
+for file i	'n fastq_input:
 	fastqc = 'fastqc -o ' + fastqc_output + ' temporary/fastq_dump/' + file	
 	os.system(fastqc)
-	
+'''	
 #bowtie2 setting
 bowtie_input = os.listdir('temporary/fastq_dump/')
-
 base_name = refGenomePath.replace('temporary/bowtie2/refGenomes/','').replace('.fasta','')
-index = 'temporary/bowtie2/indexes/' + base_name
-
-#bowtie2 genome index maker
-index_command = 'bowtie2-build '+ refGenomePath + ' temporary/bowtie2/indexes/' + base_name 
-os.system(index_command)
-
+index = 'temporary/bowtie2/indexes/' + base_name + '/' + base_name
 
 #Run bowtie2
 for file in bowtie_input:
 	genome = refGenomePath
 	sequences = 'temporary/fastq_dump/' + file
-	output = 'temporary/bowtie2/' + file + '.sam'
+	output = 'temporary/bowtie2/' + file[:-6] + '.sam'
 	bowtie = 'bowtie2 -x ' + index + ' -U ' + str(sequences) + ' -S ' + str(output)
+	print(output)
 	os.system(bowtie) 
 	
 	
