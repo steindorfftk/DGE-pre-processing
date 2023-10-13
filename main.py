@@ -39,7 +39,6 @@ for file in bowtie_input:
 	sequences = 'temporary/fastq_dump/' + file
 	output = 'temporary/bowtie2/aligned/' + file[:-6] + '.sam'
 	bowtie = 'bowtie2 -x ' + index + ' -U ' + str(sequences) + ' -S ' + str(output)
-	print(output)
 	os.system(bowtie) 
 	
 	
