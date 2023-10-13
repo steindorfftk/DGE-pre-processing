@@ -9,7 +9,7 @@ with open('input/SraAccList.txt','r') as texto:
 	for line in texto:
 		linha = line.split()
 		accession_list.append(linha[0])
-'''
+
 #Download SRA data		
 os.system('prefetch --option-file input/SraAccList.txt ')
 
@@ -27,7 +27,7 @@ fastqc_output = 'temporary/fastqc_output/'
 for file in fastq_input:
 	fastqc = 'fastqc -o ' + fastqc_output + ' temporary/fastq_dump/' + file	
 	os.system(fastqc)
-'''	
+	
 #bowtie2 setting
 bowtie_input = os.listdir('temporary/fastq_dump/')
 base_name = refGenomePath.replace('temporary/bowtie2/refGenomes/','').replace('.fasta','')
