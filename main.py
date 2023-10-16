@@ -30,12 +30,13 @@ fastq_input = os.listdir('temporary/fastq_dump')
 fastqc_output = 'temporary/fastqc_output/'
 
 for file in fastq_input:
-	if configuration.verbose == True:
-		print('Running fastqc for ' + file[:-4] + '...')	
-	fastqc = 'fastqc -o ' + fastqc_output + ' temporary/fastq_dump/' + file	
-	os.system(fastqc)
-	if configuration.verbose == True:
-		print('Done!\n')	
+	if '.fastq' in file:
+		if configuration.verbose == True:
+			print('Running fastqc for ' + file[:-4] + '...')	
+		fastqc = 'fastqc -o ' + fastqc_output + ' temporary/fastq_dump/' + file	
+		os.system(fastqc)
+		if configuration.verbose == True:
+			print('Done!\n')	
 	
 
 #bowtie2 setting
