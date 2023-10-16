@@ -1,5 +1,8 @@
 import os
 import configuration
+import time
+
+start_time = time.time()
 
 #Save accesion list
 accession_list = []
@@ -46,15 +49,53 @@ index = 'temporary/bowtie2/indexes/' + base_name + '/' + base_name
 
 #Run bowtie2
 for file in bowtie_input:
-	if configuration.verbose == True:
-		print('Running bowtie2 for ' + file[:-4] + '...')	
-	genome = configuration.refGenomePath
-	sequences = 'temporary/fastq_dump/' + file
-	output = 'temporary/bowtie2/aligned/' + file[:-6] + '.sam'
-	bowtie = 'bowtie2 -x ' + index + ' -U ' + str(sequences) + ' -S ' + str(output)
-	os.system(bowtie) 
-	if configuration.verbose == True:
-		print('Done!\n')	
+	if '.fastq' in file:
+		if configuration.verbose == True:
+			print('Running bowtie2 for ' + file[:-6] + '...')	
+		genome = configuration.refGenomePath
+		sequences = 'temporary/fastq_dump/' + file
+		output = 'temporary/bowtie2/aligned/' + file[:-6] + '.sam'
+		bowtie = 'bowtie2 -p 6 -x ' + index + ' -U ' + str(sequences) + ' -S ' + str(output)
+		os.system(bowtie) 
+		if configuration.verbose == True:
+			print('Done!\n')
+
+end_time = time.time()
+
+elapsed_time = end_time - start_time
+print(f"Elapsed time: {elapsed_time} seconds")
+
+'''
+		
+#Run samtools - mapping stats	
+samtools_input = os.listdir('temporary/bowtie2/aligned/')
+for file in samtools_input:
+	if '.sam' in file:
+		input = 'temporary/bowtie2/aligned/' + file
+		output = 'temporary/samtools/' + file[:-4] + '_mapping'
+		samtools = 'samtools view -b -o temporary/bowtie2/aligned/' + file[:-4] + ' ' + file + ' | samtools sort --no-PG -O bam -o ' + output + ' ' + file[:-4] + '.bam' 
+		os.system(samtools)	
+	
+'''	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
