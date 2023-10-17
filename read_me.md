@@ -32,6 +32,12 @@ AAGTAGGTCTCGTCTGTGTTTTCTACGAGCTTGTGTTCCAGCTGACCCACTCCCTGGGTGGGGGGACTGGGT
 2 - Run sudo apt install bowtie2
 3 - Add the reference genomes' indexes at 'temporary/bowtie2/indexes/' Download: https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml
 
+#Installing samtools
+1 - Run sudo apt-get update
+2 - Run sudo apt-get install samtools
 
+#Installing featureCounts
+1 - Run conda install -c bioconda subread
+2 - Add the genome annotations at 'temporary/feature_counts/data/' Download: https://www.gencodegenes.org/
 
 
