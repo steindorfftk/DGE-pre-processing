@@ -65,18 +65,32 @@ end_time = time.time()
 elapsed_time = end_time - start_time
 print(f"Elapsed time: {elapsed_time} seconds")
 
-'''
+
 		
 #Run samtools - mapping stats	
 samtools_input = os.listdir('temporary/bowtie2/aligned/')
+
 for file in samtools_input:
 	if '.sam' in file:
+		if configuration.verbose == True:
+			print('Converting ' + file + ' to .bam')
 		input = 'temporary/bowtie2/aligned/' + file
-		output = 'temporary/samtools/' + file[:-4] + '_mapping'
-		samtools = 'samtools view -b -o temporary/bowtie2/aligned/' + file[:-4] + ' ' + file + ' | samtools sort --no-PG -O bam -o ' + output + ' ' + file[:-4] + '.bam' 
-		os.system(samtools)	
+		os.system('samtools view -bS ' + input + ' > temporary/samtools/bam_files/' + file[:-4] + '.bam') 		
+		if configuration.verbose == True:
+			print('Sorting ' + file[:-4] + '.bam')
+		os.system('samtools sort temporary/samtools/bam_files/' + file[:-4] + '.bam -o temporary/samtools/bam_files_sorted/' + file[:-4] + '_sorted.bam') 	
+		if configuration.verbose == True:
+			print('Indexing ' + file[:-4] + '.bam')
+		os.system('samtools index temporary/samtools/bam_files_sorted/' + file[:-4] + '_sorted.bam') 	
+		if configuration.verbose == True:
+			print('Mapping stats for ' + file[:-4] + '.bam')
+		os.system('samtools flagstat temporary/samtools/bam_files_sorted/' + file[:-4] + '_sorted.bam > temporary/samtools/map_stats/' + file[:-4] + '_mapping_stats.txt')
+		if configuration.verbose == True:
+			print('Done!\n')
+
+
+		
 	
-'''	
 	
 	
 	
