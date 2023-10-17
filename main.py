@@ -60,12 +60,6 @@ for file in bowtie_input:
 		if configuration.verbose == True:
 			print('Done!\n')
 
-end_time = time.time()
-
-elapsed_time = end_time - start_time
-print(f"Elapsed time: {elapsed_time} seconds")
-
-
 		
 #Run samtools - mapping stats	
 samtools_input = os.listdir('temporary/bowtie2/aligned/')
@@ -89,12 +83,23 @@ for file in samtools_input:
 			print('Done!\n')
 
 
-		
+
+#Run feature counts	
+featurecounts_input = os.listdir('temporary/samtools/bam_files_sorted/')
+
+for file in featurecounts_input:
+	if '.bam.' not in file:
+		if configuration.verbose == True:
+			print('Counting features for ' + file[:-4] + '.bam')
+		os.system('featureCounts -a ' + configuration.annotationPath + ' -o temporary/feature_counts/output/' + file[:-4] + '.txt temporary/samtools/bam_files_sorted/' + file)
+		if configuration.verbose == True:
+			print('Done!\n')
 	
-	
-	
-	
-	
+#Print elapsed time	
+end_time = time.time()
+
+elapsed_time = end_time - start_time
+print(f"Elapsed time: {elapsed_time} seconds")	
 	
 	
 	
