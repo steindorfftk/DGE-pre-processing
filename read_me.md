@@ -39,5 +39,3 @@ AAGTAGGTCTCGTCTGTGTTTTCTACGAGCTTGTGTTCCAGCTGACCCACTCCCTGGGTGGGGGGACTGGGT
 #Installing featureCounts
 1 - Run conda install -c bioconda subread
 2 - Add the genome annotations at 'temporary/feature_counts/data/' Download: https://www.gencodegenes.org/
-
-
