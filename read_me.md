@@ -12,6 +12,7 @@ About me: This tool is intended to download gene expression data from SRA, conve
 4.2 - Enable Remote Access in the main menu
 4.3 - In the cache tab, enable local file-caching
 4.4 - In the cache tab, add the path to '/easy_dea/temporary/sratoolkit' to the "Location of user-repository"
+4.5 - Save and exit
 5 - Test that toolkit is functional: run 'fastq-dump --stdout -X 2 SRR390728'. The output must be exaclty this: 
 'Read 2 spots for SRR390728
 Written 2 spots for SRR390728
