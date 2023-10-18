@@ -38,6 +38,6 @@ AAGTAGGTCTCGTCTGTGTTTTCTACGAGCTTGTGTTCCAGCTGACCCACTCCCTGGGTGGGGGGACTGGGT
 1 - Run sudo apt-get update
 2 - Run sudo apt-get install samtools
 
-#Installing featureCounts
+#Installing featureCounts (using conda or miniconda)
 1 - Run conda install -c bioconda subread
 2 - Add the genome annotations at 'temporary/feature_counts/data/' Download: https://www.gencodegenes.org/
