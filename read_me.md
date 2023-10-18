@@ -26,18 +26,18 @@ AAGTAGGTCTCGTCTGTGTTTTCTACGAGCTTGTGTTCCAGCTGACCCACTCCCTGGGTGGGGGGACTGGGT
 ;;;;;;;;;;;;;;;;;4;;;;3;393.1+4&&5&&;;;;;;;;;;;;;;;;;;;;;<9;<;;;;;464262'
 
 #Installing fastqc
-1 - Run sudo apt-get update
-2 - Run sudo apt-get install fastqc
+1 - Run 'sudo apt-get update'
+2 - Run 'sudo apt-get install fastqc'
 
 #Installing bowtie2
-1 - Run sudo apt update
-2 - Run sudo apt install bowtie2
+1 - Run 'sudo apt update'
+2 - Run 'sudo apt install bowtie2'
 3 - Add the reference genomes' indexes at 'temporary/bowtie2/indexes/' Download: https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml
 
 #Installing samtools
-1 - Run sudo apt-get update
-2 - Run sudo apt-get install samtools
+1 - Run 'sudo apt-get update'
+2 - Run 'sudo apt-get install samtools'
 
 #Installing featureCounts (using conda or miniconda - https://docs.conda.io/projects/miniconda/en/latest/index.html#quick-command-line-install)
-1 - Run conda install -c bioconda subread
+1 - Run 'conda install -c bioconda subread'
 2 - Add the genome annotations at 'temporary/feature_counts/data/' Download: https://www.gencodegenes.org/
