@@ -6,7 +6,7 @@ About me: This tool is intended to download gene expression data from SRA, conve
 1 - Download link: https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit
 2 - Unpack downloaded file
 3.1 - Add binaries file to path (export PATH=$PATH:$PWD/sratoolkit.X.X.X-dist64/bin)
-3.2 - Test if it worked: 'run which fastq-dump'. It should have a similar output as: '/Users/JoeUser/sratoolkit.3.0.0-mac64/bin/fastq-dump'
+3.2 - Test if it worked: run 'which fastq-dump'. It should have a similar output as: '/Users/JoeUser/sratoolkit.3.0.0-mac64/bin/fastq-dump'
 4.1 - Run 'vdb-config -i'. Use tab- and space/enter keys to navigate and select.
 4.2 - Enable Remote Access in the main menu
 4.3 - In the cache tab, enable local file-caching
