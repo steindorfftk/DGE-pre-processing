@@ -11,22 +11,41 @@ with open('input/SraAccList.txt','r') as texto:
 		linha = line.split()
 		accession_list.append(linha[0])
 
+done_check = []
+
 #Download SRA data		
 if configuration.verbose == True:
 	print('Downloading SRA data...')
 os.system('prefetch --option-file input/SraAccList.txt ')
 if configuration.verbose == True:
-	print('Done!\n')
+	isdone = True
+	prefetch_done = os.listdir('temporary/sratoolkit/sra')
+	for file in prefetch_done:
+		done_check.append(file[:-4])
+	for acc in accession_list:
+		if acc not in done_check:
+			isdone = False
+	if isdone == True:
+		print('Done!\n')
+	else:
+		print('Error downloading one or more SRA files')
+
+done_check = []
 
 #Convert SRA to fastq
 for acc in accession_list:
 	if configuration.verbose == True:
-		print('Converting ' + acc + '.sra to fastq...')
+		print('Converting ' + acc + '.sra to fastq (fasterq-dump) ...')
 	dumper = 'fasterq-dump ' + acc + ' -O temporary/fastq_dump'
 	os.system(dumper)
 	if configuration.verbose == True:
-		print('Done!\n')	
-
+		fastqdump_done = os.listdir('temporary/fastq_dump')
+		for file in fastqdump_done:
+			done_check.append(file[:-6])
+		if acc in done_check:
+			print('Done!\n')
+		else:
+			print(f'Error converting {acc}.sra to .fastq')			
 
 #Run fastqc	
 fastq_input = os.listdir('temporary/fastq_dump')	
@@ -35,12 +54,13 @@ fastqc_output = 'temporary/fastqc_output/'
 for file in fastq_input:
 	if '.fastq' in file:
 		if configuration.verbose == True:
-			print('Running fastqc for ' + file[:-4] + '...')	
+			print('Running quality control for ' + file + ' (fastqc) ...')	
 		fastqc = 'fastqc -o ' + fastqc_output + ' temporary/fastq_dump/' + file	
 		os.system(fastqc)
 		if configuration.verbose == True:
 			print('Done!\n')	
 	
+
 
 #bowtie2 setting
 bowtie_input = os.listdir('temporary/fastq_dump/')
@@ -51,7 +71,7 @@ index = 'temporary/bowtie2/indexes/' + base_name + '/' + base_name
 for file in bowtie_input:
 	if '.fastq' in file:
 		if configuration.verbose == True:
-			print('Running bowtie2 for ' + file[:-6] + '...')	
+			print('Aligning ' + file[:-6] + ' reads with reference genome (bowtie2)...')	
 		genome = configuration.refGenomePath
 		sequences = 'temporary/fastq_dump/' + file
 		output = 'temporary/bowtie2/aligned/' + file[:-6] + '.sam'
@@ -88,19 +108,37 @@ for file in samtools_input:
 featurecounts_input = os.listdir('temporary/samtools/bam_files_sorted/')
 
 for file in featurecounts_input:
-	if '.bam.' not in file:
+	if '.bam' in file and '.bam.' not in file:
 		if configuration.verbose == True:
-			print('Counting features for ' + file[:-4] + '.bam')
+			print('Counting features for ' + file + ' (featureCounts)')
 		os.system('featureCounts -a ' + configuration.annotationPath + ' -o temporary/feature_counts/output/' + file[:-4] + '.txt temporary/samtools/bam_files_sorted/' + file)
+
 		if configuration.verbose == True:
 			print('Done!\n')
-	
+
+#Extract feature counts data to a tabular file
+output_input = os.listdir('temporary/feature_counts/output/')
+
+mg = mygene.MyGeneInfo()
+
+for file in output_input:
+	if '.txt' in file and '.txt.' not in file:
+		inputName = 'temporary/feature_counts/output/' + file
+		outputName = 'output/' + file[:-4] + '.tabular'
+		with open(inputName,'r') as texto:
+			with open(outputName, 'w') as outputFile:
+				outputFile.write('GeneId , Counts \n')
+				for line in texto:
+					if 'ENS' in line:
+						linha = line.split()
+						outputFile.write(linha[0] + ' , ' + linha[-1])
+							
 #Print elapsed time	
 end_time = time.time()
 
 elapsed_time = end_time - start_time
 print(f"Elapsed time: {elapsed_time} seconds")	
-	
+
 	
 	
 	
