@@ -87,18 +87,14 @@ samtools_input = os.listdir('temporary/bowtie2/aligned/')
 for file in samtools_input:
 	if '.sam' in file:
 		if configuration.verbose == True:
-			print('Converting ' + file + ' to .bam')
-		input = 'temporary/bowtie2/aligned/' + file
-		os.system('samtools view -bS ' + input + ' > temporary/samtools/bam_files/' + file[:-4] + '.bam') 		
-		if configuration.verbose == True:
 			print('Sorting ' + file[:-4] + '.bam')
-		os.system('samtools sort temporary/samtools/bam_files/' + file[:-4] + '.bam -o temporary/samtools/bam_files_sorted/' + file[:-4] + '_sorted.bam') 	
-		if configuration.verbose == True:
-			print('Indexing ' + file[:-4] + '.bam')
-		os.system('samtools index temporary/samtools/bam_files_sorted/' + file[:-4] + '_sorted.bam') 	
-		if configuration.verbose == True:
-			print('Mapping stats for ' + file[:-4] + '.bam')
-		os.system('samtools flagstat temporary/samtools/bam_files_sorted/' + file[:-4] + '_sorted.bam > temporary/samtools/map_stats/' + file[:-4] + '_mapping_stats.txt')
+		os.system('samtools sort temporary/bowtie2/aligned/' + file + ' -O bam -o temporary/samtools/bam_files_sorted/' + file[:-4] + '_sorted.bam') 	
+#		if configuration.verbose == True:
+#			print('Indexing ' + file[:-4] + '.bam')
+#		os.system('samtools index temporary/samtools/bam_files_sorted/' + file[:-4] + '_sorted.bam') 	
+#		if configuration.verbose == True:
+#			print('Mapping stats for ' + file[:-4] + '.bam')
+#		os.system('samtools flagstat temporary/samtools/bam_files_sorted/' + file[:-4] + '_sorted.bam > temporary/samtools/map_stats/' + file[:-4] + '_mapping_stats.txt')
 		if configuration.verbose == True:
 			print('Done!\n')
 
@@ -116,22 +112,19 @@ for file in featurecounts_input:
 		if configuration.verbose == True:
 			print('Done!\n')
 
+
 #Extract feature counts data to a tabular file
 output_input = os.listdir('temporary/feature_counts/output/')
 
-mg = mygene.MyGeneInfo()
+
 
 for file in output_input:
 	if '.txt' in file and '.txt.' not in file:
 		inputName = 'temporary/feature_counts/output/' + file
 		outputName = 'output/' + file[:-4] + '.tabular'
-		with open(inputName,'r') as texto:
-			with open(outputName, 'w') as outputFile:
-				outputFile.write('GeneId , Counts \n')
-				for line in texto:
-					if 'ENS' in line:
-						linha = line.split()
-						outputFile.write(linha[0] + ' , ' + linha[-1])
+		os.system("sed -i '/^#/d' " + inputName)
+		os.system('cut -f 1,7 ' + inputName + ' > ' + outputName) 
+
 							
 #Print elapsed time	
 end_time = time.time()
