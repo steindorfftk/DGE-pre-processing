@@ -107,7 +107,7 @@ for file in featurecounts_input:
 	if '.bam' in file and '.bam.' not in file:
 		if configuration.verbose == True:
 			print('Counting features for ' + file + ' (featureCounts)')
-		os.system('featureCounts -a ' + configuration.annotationPath + ' -o temporary/feature_counts/output/' + file[:-4] + '.txt temporary/samtools/bam_files_sorted/' + file)
+		os.system('featureCounts -a ' + configuration.annotationPath + ' -F "SAF" -o temporary/feature_counts/output/' + file[:-4] + '.txt temporary/samtools/bam_files_sorted/' + file)
 
 		if configuration.verbose == True:
 			print('Done!\n')
@@ -121,7 +121,7 @@ output_input = os.listdir('temporary/feature_counts/output/')
 for file in output_input:
 	if '.txt' in file and '.txt.' not in file:
 		inputName = 'temporary/feature_counts/output/' + file
-		outputName = 'output/' + file[:-4] + '.tabular'
+		outputName = 'output/' + file[:-11] + '.tabular'
 		os.system("sed -i '/^#/d' " + inputName)
 		os.system('cut -f 1,7 ' + inputName + ' > ' + outputName) 
 
