@@ -121,7 +121,7 @@ output_input = os.listdir('temporary/feature_counts/output/')
 for file in output_input:
 	if '.txt' in file and '.txt.' not in file:
 		inputName = 'temporary/feature_counts/output/' + file
-		outputName = 'output/' + file[:-11] + '.tabular'
+		outputName = 'output/' + file[:-4] + '.tabular'
 		os.system("sed -i '/^#/d' " + inputName)
 		os.system('cut -f 1,7 ' + inputName + ' > ' + outputName) 
 
