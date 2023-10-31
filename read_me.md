@@ -40,6 +40,4 @@ AAGTAGGTCTCGTCTGTGTTTTCTACGAGCTTGTGTTCCAGCTGACCCACTCCCTGGGTGGGGGGACTGGGT
 
 #Installing featureCounts (using conda or miniconda - https://docs.conda.io/projects/miniconda/en/latest/index.html#quick-command-line-install)
 1 - Run 'conda install -c bioconda subread'
-2 - Add the genome annotations at 'temporary/feature_counts/data/' 
-Download (Homo sapiens): https://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/annotation/GRCh38_latest/refseq_identifiers/
-Download (Mus musculus): https://ftp.ncbi.nlm.nih.gov/refseq/M_musculus/annotation_releases/current/GCF_000001635.27-RS_2023_04/
+Obs: Gene annotations updated november 2023 (temporary/featureCounts/data)
