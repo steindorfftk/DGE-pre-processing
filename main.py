@@ -47,6 +47,14 @@ for acc in accession_list:
 		else:
 			print(f'Error converting {acc}.sra to .fastq')			
 
+#Delete SRA files
+if configuration.lowmemory == True:
+	sra_files = os.listdir('temporary/sratoolkit/sra')
+	for file in sra_files:
+		path = 'temporary/sratoolkit/sra/' + file
+		os.remove(path)
+
+
 #Run fastqc	
 fastq_input = os.listdir('temporary/fastq_dump')	
 fastqc_output = 'temporary/fastqc_output/'
@@ -80,6 +88,14 @@ for file in bowtie_input:
 		if configuration.verbose == True:
 			print('Done!\n')
 
+
+#Delete fastq files
+if configuration.lowmemory == True:
+	sra_files = os.listdir('temporary/fastq_dump')
+	for file in sra_files:
+		path = 'temporary/fastq_dump/' + file
+		os.remove(path)
+
 		
 #Run samtools - mapping stats	
 samtools_input = os.listdir('temporary/bowtie2/aligned/')
@@ -99,6 +115,13 @@ for file in samtools_input:
 			print('Done!\n')
 
 
+#Delete aligned files
+if configuration.lowmemory == True:
+	sra_files = os.listdir('temporary/bowtie2/aligned')
+	for file in sra_files:
+		path = 'temporary/bowtie2/aligned/' + file
+		os.remove(path)
+
 
 #Run feature counts	
 featurecounts_input = os.listdir('temporary/samtools/bam_files_sorted/')
@@ -113,8 +136,19 @@ for file in featurecounts_input:
 			print('Done!\n')
 
 
+#Delete bam sorted files
+if configuration.lowmemory == True:
+	sra_files = os.listdir('temporary/samtools/bam_files_sorted/')
+	for file in sra_files:
+		path = 'temporary/samtools/bam_files_sorted/' + file
+		os.remove(path)
+
+
 #Extract feature counts data to a tabular file
 output_input = os.listdir('temporary/feature_counts/output/')
+
+
+
 
 
 
@@ -125,6 +159,14 @@ for file in output_input:
 		os.system("sed -i '/^#/d' " + inputName)
 		os.system('cut -f 1,7 ' + inputName + ' > ' + outputName) 
 
+
+
+#Delete feature counts output files
+if configuration.lowmemory == True:
+	sra_files = os.listdir('temporary/feature_counts/output/')
+	for file in sra_files:
+		path = 'temporary/feature_counts/output/' + file
+		os.remove(path)
 							
 #Print elapsed time	
 end_time = time.time()

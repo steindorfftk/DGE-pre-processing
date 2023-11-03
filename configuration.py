@@ -1,5 +1,6 @@
 #Configuration
 verbose = True
+lowmemory = True
 organism = 'Mus musculus'
 
 
