@@ -42,3 +42,8 @@ AAGTAGGTCTCGTCTGTGTTTTCTACGAGCTTGTGTTCCAGCTGACCCACTCCCTGGGTGGGGGGACTGGGT
 1 - Run 'conda install -c bioconda subread'
 2 - Add gene annotations to 'temporary/feature_counts/data/'  (https://code.bioconductor.org/browse/Rsubread/tree/RELEASE_3_9/inst/annot/)
 Obs: DEA-pre-processing built-in annotations updated november 2023 (temporary/featureCounts/data)
+
+IMPORTANT: Configuration
+It's necessary to indicate in 'configuration.py' the organism of your data.
+If verbose == True the script will print the progress of your work in terminal.
+If lowmemory == True the script will delete intermediate files and keep only the final output for feature counts and fastqc.
