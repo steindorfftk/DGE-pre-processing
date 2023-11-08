@@ -32,7 +32,7 @@ AAGTAGGTCTCGTCTGTGTTTTCTACGAGCTTGTGTTCCAGCTGACCCACTCCCTGGGTGGGGGGACTGGGT
 #Installing bowtie2
 1 - Run 'sudo apt update'
 2 - Run 'sudo apt install bowtie2'
-3 - Add the reference genomes' indexes at 'temporary/bowtie2/indexes/' Download: https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml
+3 - Add the reference genomes' indexes at 'temporary/bowtie2/indexes/' (Homo sapiens and Mus musculus) Download: https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml
 
 #Installing samtools
 1 - Run 'sudo apt-get update'
@@ -40,4 +40,5 @@ AAGTAGGTCTCGTCTGTGTTTTCTACGAGCTTGTGTTCCAGCTGACCCACTCCCTGGGTGGGGGGACTGGGT
 
 #Installing featureCounts (using conda or miniconda - https://docs.conda.io/projects/miniconda/en/latest/index.html#quick-command-line-install)
 1 - Run 'conda install -c bioconda subread'
-Obs: Gene annotations updated november 2023 (temporary/featureCounts/data)
+2 - Add gene annotations to 'temporary/feature_counts/data/'  (https://code.bioconductor.org/browse/Rsubread/tree/RELEASE_3_9/inst/annot/)
+Obs: DEA-pre-processing built-in annotations updated november 2023 (temporary/featureCounts/data)
