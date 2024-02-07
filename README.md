@@ -1,6 +1,6 @@
 ### This tool is intended to download gene expression data from SRA, convert it to fastq, run standard quality control, perform alignment and run differential expression analysis for a given list of SRA accession codes.
-## 
-## This version is currently suited for unpaired reads only
+### The instructions in the README are intended for use on Linux operating systems
+## Important: This version is currently suited for unpaired reads only.
 
 # Program Installation
 - Download the program files: Click on '<> Code' and then on 'Download ZIP'
