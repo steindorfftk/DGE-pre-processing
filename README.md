@@ -5,24 +5,24 @@
 
 # Program Installation
 - 1 - Download the program files: Click on '<> Code' and then on 'Download ZIP'
-2 - Place the 'DEG-pre-processing-main.zip' file on the installation directory of your choice.
-3 - Change into the installation directory and unzip the program files (unzip DEG-pre-processing-main.zip)  
+- 2 - Place the 'DEG-pre-processing-main.zip' file on the installation directory of your choice.
+- 3 - Change into the installation directory and unzip the program files (unzip DEG-pre-processing-main.zip)  
 
 # Required packages Installation
 #### SRA Tool kit 
-1 - Download SRA tool kit from https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit. For Linux, click on 'Ubuntu Linux 64 bit architecture' to download the file.
-2 - Place the 'sratoolkit.X.X.X-ubuntu64.tar.gz' file on the installation directory of your choice. (Replace X.X.X for the appropriate downloaded version)
-3 - Change into the installation directory and uzip the program files (tar -xzf sratoolkit.X.X.X-ubuntu64.tar.gz)
-4 - Change into sratoolkit.X.X.X-ubuntu64 directory.
-5 - Add SRA Tool kit binaries file to path (export PATH=$PATH:$PWD/bin).  
-6 - Test if it was added to path: run 'which fastq-dump'. It should have a similar output as: '/Users/JoeUser/sratoolkit.3.0.0-mac64/bin/fastq-dump'
-7 - Delete 'init.py' from 'DEG-pre-processing/temporary/sratoolkit/' 
-8.1 - Run the command 'vdb-config -i'. Use tab- and space/enter keys to navigate and select. 
-8.2 - Enable Remote Access in the main menu 
-8.3 - In the cache tab, enable local file-caching 
-8.4 - In the cache tab, add the path to '/DEG-pre-processing/temporary/sratoolkit' to the "Location of user-repository" 
-8.5 - Save and exit 
-9 - Test that toolkit is functional: run 'fastq-dump --stdout -X 2 SRR390728'. The output must be exaclty this: 'Read 2 spots for SRR390728 Written 2 spots for SRR390728 @SRR390728.1 1 length=72 CATTCTTCACGTAGTTCTCGAGCCTTGGTTTTCAGCGATGGAGAATGACTTTGACAAGCTGAGAGAAGNTNC +SRR390728.1 1 length=72 ;;;;;;;;;;;;;;;;;;;;;;;;;;;9;;665142;;;;;;;;;;;;;;;;;;;;;;;;;;;;;96&&&&( @SRR390728.2 2 length=72 AAGTAGGTCTCGTCTGTGTTTTCTACGAGCTTGTGTTCCAGCTGACCCACTCCCTGGGTGGGGGGACTGGGT +SRR390728.2 2 length=72 ;;;;;;;;;;;;;;;;;4;;;;3;393.1+4&&5&&;;;;;;;;;;;;;;;;;;;;;<9;<;;;;;464262'
+- 1 - Download SRA tool kit from https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit. For Linux, click on 'Ubuntu Linux 64 bit architecture' to download the file.
+- 2 - Place the 'sratoolkit.X.X.X-ubuntu64.tar.gz' file on the installation directory of your choice. (Replace X.X.X for the appropriate downloaded version)
+- 3 - Change into the installation directory and uzip the program files (tar -xzf sratoolkit.X.X.X-ubuntu64.tar.gz)
+- 4 - Change into sratoolkit.X.X.X-ubuntu64 directory.
+- 5 - Add SRA Tool kit binaries file to path (export PATH=$PATH:$PWD/bin).  
+- 6 - Test if it was added to path: run 'which fastq-dump'. It should have a similar output as: '/Users/JoeUser/sratoolkit.3.0.0-mac64/bin/fastq-dump'
+- 7 - Delete 'init.py' from 'DEG-pre-processing/temporary/sratoolkit/' 
+- 8.1 - Run the command 'vdb-config -i'. Use tab- and space/enter keys to navigate and select. 
+- 8.2 - Enable Remote Access in the main menu 
+- 8.3 - In the cache tab, enable local file-caching 
+- 8.4 - In the cache tab, add the path to '/DEG-pre-processing/temporary/sratoolkit' to the "Location of user-repository" 
+- 8.5 - Save and exit 
+- 9 - Test that toolkit is functional: run 'fastq-dump --stdout -X 2 SRR390728'. The output must be exaclty this: 'Read 2 spots for SRR390728 Written 2 spots for SRR390728 @SRR390728.1 1 length=72 CATTCTTCACGTAGTTCTCGAGCCTTGGTTTTCAGCGATGGAGAATGACTTTGACAAGCTGAGAGAAGNTNC +SRR390728.1 1 length=72 ;;;;;;;;;;;;;;;;;;;;;;;;;;;9;;665142;;;;;;;;;;;;;;;;;;;;;;;;;;;;;96&&&&( @SRR390728.2 2 length=72 AAGTAGGTCTCGTCTGTGTTTTCTACGAGCTTGTGTTCCAGCTGACCCACTCCCTGGGTGGGGGGACTGGGT +SRR390728.2 2 length=72 ;;;;;;;;;;;;;;;;;4;;;;3;393.1+4&&5&&;;;;;;;;;;;;;;;;;;;;;<9;<;;;;;464262'
 
 
 # Input File Preparation
