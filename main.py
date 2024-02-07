@@ -1,6 +1,5 @@
 import os
-import configuration
-import paths
+import DPP_configuration
 import time
 
 start_time = time.time()
