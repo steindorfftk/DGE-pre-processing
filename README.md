@@ -74,3 +74,8 @@
 - 1 - Make sure that the input 'SRR_Acc_List.txt' file is in the proper directory as indicated in the 'Input File Preparation' section and that the proper organism is selected as of 'Program configuration' section.
 - 2 - Navigate to the 'DEG-pre-processing-main' directory.
 - 3 - Run 'python3 main.py'
+
+# You will three outputs for each Accession code:
+- a) The .tabular file with gene counts
+- b) The .html file with quality metrics from fastqc
+- c) The .txt file with alignment metrics from bowtie2
