@@ -4,7 +4,7 @@
 
 
 # Program Installation
-1 - Download the program files: Click on '<> Code' and then on 'Download ZIP'
+- 1 - Download the program files: Click on '<> Code' and then on 'Download ZIP'
 2 - Place the 'DEG-pre-processing-main.zip' file on the installation directory of your choice.
 3 - Change into the installation directory and unzip the program files (unzip DEG-pre-processing-main.zip)  
 
