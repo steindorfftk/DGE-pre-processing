@@ -24,6 +24,14 @@
 - 8.5 - Save and exit 
 - 9 - Test that toolkit is functional: run 'fastq-dump --stdout -X 2 SRR390728'. The output must be exaclty this: 'Read 2 spots for SRR390728 Written 2 spots for SRR390728 @SRR390728.1 1 length=72 CATTCTTCACGTAGTTCTCGAGCCTTGGTTTTCAGCGATGGAGAATGACTTTGACAAGCTGAGAGAAGNTNC +SRR390728.1 1 length=72 ;;;;;;;;;;;;;;;;;;;;;;;;;;;9;;665142;;;;;;;;;;;;;;;;;;;;;;;;;;;;;96&&&&( @SRR390728.2 2 length=72 AAGTAGGTCTCGTCTGTGTTTTCTACGAGCTTGTGTTCCAGCTGACCCACTCCCTGGGTGGGGGGACTGGGT +SRR390728.2 2 length=72 ;;;;;;;;;;;;;;;;;4;;;;3;393.1+4&&5&&;;;;;;;;;;;;;;;;;;;;;<9;<;;;;;464262'
 
+#### fastqc
+- 1 - Run 'sudo apt-get install fastqc'
+
+#### bowtie2
+- 1 - Run 'sudo apt install bowtie2'
+- 2 - Download the reference genomes of Homo sapiens and Mus musculus from the right menu on https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml (Homo sapiens index: H. sapiens, GRCh38 no-alt analysis set; Mus musculus index: M. Musculus, mm10)
+- 3 - Place the indexes into DEG-preprocessing/temporary/bowtie2/indexes/ directory.
+
 
 # Input File Preparation
 - This program is suitable to scrape data from any list of studies found after a Gene Expression Omnibus (GEO) search. The input file must be one or more html files with search results. Prepare the file as following:
