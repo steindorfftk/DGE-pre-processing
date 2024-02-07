@@ -1,12 +1,13 @@
 import os
 import configuration
+import paths
 import time
 
 start_time = time.time()
 
 #Save accesion list
 accession_list = []
-with open('input/SraAccList.txt','r') as texto:
+with open('input/SRR_Acc_List.txt','r') as texto:
 	for line in texto:
 		linha = line.split()
 		accession_list.append(linha[0])
@@ -16,7 +17,7 @@ done_check = []
 #Download SRA data		
 if configuration.verbose == True:
 	print('Downloading SRA data...')
-os.system('prefetch --option-file input/SraAccList.txt ')
+os.system('prefetch --option-file input/SRR_Acc_List.txt ')
 if configuration.verbose == True:
 	isdone = True
 	prefetch_done = os.listdir('temporary/sratoolkit/sra')
