@@ -83,7 +83,7 @@ for file in bowtie_input:
 		genome = DPP_configuration.refGenomePath
 		sequences = 'temporary/fastq_dump/' + file
 		output = 'temporary/bowtie2/aligned/' + file[:-6] + '.sam'
-		bowtie = 'bowtie2 -p 6 -x ' + index + ' -U ' + str(sequences) + ' -S ' + str(output)
+		bowtie = 'bowtie2 -p 6 -x ' + index + ' -U ' + str(sequences) + ' -S ' + str(output) + ' 2>&1 | tee output/'+ file[:-6] +  '_bowtie2_log.txt'
 		os.system(bowtie) 
 		if DPP_configuration.verbose == True:
 			print('Done!\n')
