@@ -1,6 +1,6 @@
-### This tool is intended to download gene expression data from SRA, convert it to fastq, run standard quality control, perform alignment and run differential expression analysis for a given list of SRA accession codes.
-### The instructions in the README are intended for use on Linux operating systems
-## Important: This version is currently suited for unpaired reads only.
+### About DEG-pre-processing: This tool is intended to download gene expression data from SRA, convert it to fastq, run standard quality control, perform alignment and run differential expression analysis for a given list of SRA accession codes.
+### Obs1: The instructions in the README are intended for use on Linux operating systems
+### Obs2: This version is currently suited for unpaired reads only.
 
 
 # Program Installation
@@ -15,8 +15,14 @@
 3 - Change into the installation directory and uzip the program files (tar -xzf sratoolkit.X.X.X-ubuntu64.tar.gz)
 4 - Change into sratoolkit.X.X.X-ubuntu64 directory.
 5 - Add SRA Tool kit binaries file to path (export PATH=$PATH:$PWD/bin).  
-
-3.2 - Test if it worked: run 'which fastq-dump'. It should have a similar output as: '/Users/JoeUser/sratoolkit.3.0.0-mac64/bin/fastq-dump' 4 - Delete 'init.py' from 'temporary/sratoolkit/' 4.1 - Run 'vdb-config -i'. Use tab- and space/enter keys to navigate and select. 4.2 - Enable Remote Access in the main menu 4.3 - In the cache tab, enable local file-caching 4.4 - In the cache tab, add the path to '/easy_dea/temporary/sratoolkit' to the "Location of user-repository" 4.5 - Save and exit 5 - Test that toolkit is functional: run 'fastq-dump --stdout -X 2 SRR390728'. The output must be exaclty this: 'Read 2 spots for SRR390728 Written 2 spots for SRR390728 @SRR390728.1 1 length=72 CATTCTTCACGTAGTTCTCGAGCCTTGGTTTTCAGCGATGGAGAATGACTTTGACAAGCTGAGAGAAGNTNC +SRR390728.1 1 length=72 ;;;;;;;;;;;;;;;;;;;;;;;;;;;9;;665142;;;;;;;;;;;;;;;;;;;;;;;;;;;;;96&&&&( @SRR390728.2 2 length=72 AAGTAGGTCTCGTCTGTGTTTTCTACGAGCTTGTGTTCCAGCTGACCCACTCCCTGGGTGGGGGGACTGGGT +SRR390728.2 2 length=72 ;;;;;;;;;;;;;;;;;4;;;;3;393.1+4&&5&&;;;;;;;;;;;;;;;;;;;;;<9;<;;;;;464262'
+6 - Test if it was added to path: run 'which fastq-dump'. It should have a similar output as: '/Users/JoeUser/sratoolkit.3.0.0-mac64/bin/fastq-dump'
+7 - Delete 'init.py' from 'DEG-pre-processing/temporary/sratoolkit/' 
+8.1 - Run the command 'vdb-config -i'. Use tab- and space/enter keys to navigate and select. 
+8.2 - Enable Remote Access in the main menu 
+8.3 - In the cache tab, enable local file-caching 
+8.4 - In the cache tab, add the path to '/DEG-pre-processing/temporary/sratoolkit' to the "Location of user-repository" 
+8.5 - Save and exit 
+9 - Test that toolkit is functional: run 'fastq-dump --stdout -X 2 SRR390728'. The output must be exaclty this: 'Read 2 spots for SRR390728 Written 2 spots for SRR390728 @SRR390728.1 1 length=72 CATTCTTCACGTAGTTCTCGAGCCTTGGTTTTCAGCGATGGAGAATGACTTTGACAAGCTGAGAGAAGNTNC +SRR390728.1 1 length=72 ;;;;;;;;;;;;;;;;;;;;;;;;;;;9;;665142;;;;;;;;;;;;;;;;;;;;;;;;;;;;;96&&&&( @SRR390728.2 2 length=72 AAGTAGGTCTCGTCTGTGTTTTCTACGAGCTTGTGTTCCAGCTGACCCACTCCCTGGGTGGGGGGACTGGGT +SRR390728.2 2 length=72 ;;;;;;;;;;;;;;;;;4;;;;3;393.1+4&&5&&;;;;;;;;;;;;;;;;;;;;;<9;<;;;;;464262'
 
 
 # Input File Preparation
