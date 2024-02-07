@@ -15,7 +15,7 @@
 - 3 - Change into the installation directory and uzip the program files (tar -xzf sratoolkit.X.X.X-ubuntu64.tar.gz)
 - 4 - Change into sratoolkit.X.X.X-ubuntu64 directory.
 - 5 - Add SRA Tool kit binaries file to path (export PATH=$PATH:$PWD/bin).  
-- 6 - Test if it was added to path: run 'which fastq-dump'. It should have a similar output as: '/Users/JoeUser/sratoolkit.3.0.0-mac64/bin/fastq-dump'
+- 6 - Test that it was added to path: run 'which fastq-dump'. It should have a similar output as: '/Users/JoeUser/sratoolkit.3.0.0-mac64/bin/fastq-dump'
 - 7 - Delete 'init.py' from 'DEG-pre-processing/temporary/sratoolkit/' 
 - 8.1 - Run the command 'vdb-config -i'. Use tab- and space/enter keys to navigate and select. 
 - 8.2 - Enable Remote Access in the main menu 
@@ -24,14 +24,27 @@
 - 8.5 - Save and exit 
 - 9 - Test that toolkit is functional: run 'fastq-dump --stdout -X 2 SRR390728'. The output must be exaclty this: 'Read 2 spots for SRR390728 Written 2 spots for SRR390728 @SRR390728.1 1 length=72 CATTCTTCACGTAGTTCTCGAGCCTTGGTTTTCAGCGATGGAGAATGACTTTGACAAGCTGAGAGAAGNTNC +SRR390728.1 1 length=72 ;;;;;;;;;;;;;;;;;;;;;;;;;;;9;;665142;;;;;;;;;;;;;;;;;;;;;;;;;;;;;96&&&&( @SRR390728.2 2 length=72 AAGTAGGTCTCGTCTGTGTTTTCTACGAGCTTGTGTTCCAGCTGACCCACTCCCTGGGTGGGGGGACTGGGT +SRR390728.2 2 length=72 ;;;;;;;;;;;;;;;;;4;;;;3;393.1+4&&5&&;;;;;;;;;;;;;;;;;;;;;<9;<;;;;;464262'
 
-#### fastqc
-- 1 - Run 'sudo apt-get install fastqc'
-
 #### bowtie2
 - 1 - Run 'sudo apt install bowtie2'
 - 2 - Download the reference genomes of Homo sapiens and Mus musculus from the right menu on https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml (Homo sapiens index: H. sapiens, GRCh38 no-alt analysis set; Mus musculus index: M. Musculus, mm10)
 - 3 - Place the indexes into DEG-preprocessing/temporary/bowtie2/indexes/ directory.
 
+#### featureCounts
+- 1.1 - Make a directory to install mini conda in the installation directory of your choice (mkdir -p miniconda3)
+- 1.2 - Change into miniconda3 directory
+- 1.3 - Download miniconda (wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh)
+- 1.4 - Run miniconda installation script (bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3)
+- 1.5 - Remove miniconda installation script (rm -rf ~/miniconda3/miniconda.sh)
+- 1.6 - Initiallize miniconda3 ($PWD/bin/conda init bash)
+- 2.1 - Download features counts (conda install -c bioconda subread)
+- 2.2 - Test that featureCounts was installed (which featureCounts). It should have a similar output as: '/home/User/miniforge3/bin/featureCounts'
+- The gene annotations at 'DEG-pre-processing/feature_counts/data' are updated as of february 2024. They were downloaded from Rsubread repository: https://code.bioconductor.org/browse/Rsubread/tree/RELEASE_3_9/inst/annot/
+
+#### fastqc
+- 1 - Run 'sudo apt-get install fastqc'
+
+#### samtools
+- 1 - Run 'sudo apt-get install samtools'
 
 # Input File Preparation
 - This program is suitable to scrape data from any list of studies found after a Gene Expression Omnibus (GEO) search. The input file must be one or more html files with search results. Prepare the file as following:
