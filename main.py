@@ -57,7 +57,7 @@ if DPP_configuration.lowmemory == True:
 
 #Run fastqc	
 fastq_input = os.listdir('temporary/fastq_dump')	
-fastqc_output = 'temporary/fastqc_output/'
+fastqc_output = 'output/fastqc_output/'
 
 for file in fastq_input:
 	if '.fastq' in file:
