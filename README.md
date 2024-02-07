@@ -64,7 +64,7 @@
 - 4 - Place the 'SRR_Acc_List.txt' file at the 'DEG-pre-processing-main/input' directory.
 
 # Program configuration
-- You have the option to define three variables within the 'configuration.py' file. 
+- You have the option to define three variables within the 'DPP_configuration.py' file. 
 - 1 - verbose: Set to False if you prefer the program not to print progress updates in the terminal during execution.
 - 2 - lowmemory: Set to False if you prefer the program not to delete used files as it progresses through subsequent steps.
 - 3 - organism: Set to 'Homo sapiens' or 'Mus musculus' according to your sample
