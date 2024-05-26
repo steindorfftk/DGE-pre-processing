@@ -1,4 +1,4 @@
-### DEG-pre-processing is a tool designed for downloading gene expression data from the Sequence Read Archive (SRA), converting it to FASTQ format, conducting standard quality control procedures, performing alignment, and executing differential expression analysis for a specified list of SRA accession codes.
+### DEG-pre-processing is a tool designed for downloading gene expression data from the Sequence Read Archive (SRA), converting it to FASTQ format, conducting standard quality control procedures, performing alignment, and counting features for a specified list of SRA accession codes.
 ### Obs1: The instructions provided in the README are tailored for usage on Linux operating systems.
 ### Obs2: This version of the tool is currently optimized for processing unpaired reads exclusively.
 ### Obs3: Depending on your Linux distribution, there may be an issue with the sratoolkit package where it gets removed from the PATH file after a PC reboot. Consequently, you may need to re-add it to the PATH before using the program again, typically as part of step 5 in the "Required packages installation - SRA Tool Kit" section from this README.
